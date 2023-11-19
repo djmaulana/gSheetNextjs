@@ -18,7 +18,6 @@ export default function page () {
         message
     }
 
-
     const handleSubmit = async () => {
       try {
         await fetch('/api/test', {

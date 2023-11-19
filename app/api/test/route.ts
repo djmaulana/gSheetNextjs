@@ -10,10 +10,9 @@ type SheetForm = {
     }
   }
 
-
 export async function POST(req: Request) {
     if (req.method !== 'POST'){
-        return new Response('BAD')
+        return new Response('Method not Allowed')
     }
     const body  = await req.json() as SheetForm
     try {
@@ -45,7 +44,7 @@ export async function POST(req: Request) {
         })
         return new Response('OK')
     } catch (error) {
-        // console.error(error)
-        return new Response('BAD')
+        console.error(error)
+        return new Response('ERROR')
     }
 }
