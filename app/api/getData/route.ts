@@ -5,6 +5,7 @@ export async function GET(req: Request, res: Response) {
         return new Response('Method not Allowed')
     }
     try {
+        console.log('Authenticating ...')
         const auth = await google.auth.getClient({
             projectId: "neoproject-402401",
             credentials: {
@@ -33,6 +34,7 @@ export async function GET(req: Request, res: Response) {
             name: row[0],
             message: row[1],
         }));
+        console.log('Completed!')
         return new Response(JSON.stringify({data: formattedData}))
     } catch (error) {
         console.error(error)

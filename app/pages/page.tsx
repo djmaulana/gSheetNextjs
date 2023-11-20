@@ -19,7 +19,6 @@ export default function page () {
     }
 
     const handleSubmit = async () => {
-      console.log('clicked')
       try {
         await fetch('/api/test', {
           method: 'POST',
@@ -37,10 +36,9 @@ export default function page () {
     const loadData = async () => {
       try {
         const res = await axios.get('/api/getData')
-        console.log(res.data)
         setData(res.data.data);
       } catch (e) {
-        
+        console.error(e)
       }
     }
     
