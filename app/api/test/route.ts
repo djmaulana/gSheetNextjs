@@ -15,8 +15,12 @@ export async function POST(req: Request) {
     try {
         const auth = new google.auth.GoogleAuth({
         credentials: {
-            client_email: process.env.GOOGLE_CLIENT_EMAIL,
-            private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n')
+            type: "service_account",
+              private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+              client_email: process.env.GOOGLE_CLIENT_EMAIL,
+              client_id: process.env.GOOGLE_SHEET_ID,
+              token_url: "https://oauth2.googleapis.com/token",
+              universe_domain: "googleapis.com",
         },
         scopes: [
             'https://www.googleapis.com/auth/drive',
