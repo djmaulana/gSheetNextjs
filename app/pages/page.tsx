@@ -1,6 +1,7 @@
 'use client'
 import * as React from 'react'
 import axios from 'axios'
+import { BASE_API_URL } from '@/utils/constans';
 
 interface MyData {
   name: string;
@@ -20,7 +21,7 @@ export default function page () {
 
     const handleSubmit = async () => {
       try {
-        await fetch('/api/test', {
+        await fetch(`${BASE_API_URL}/api/test`, {
           method: 'POST',
           body: JSON.stringify({form})
         })
@@ -35,7 +36,7 @@ export default function page () {
 
     const loadData = async () => {
       try {
-        const res = await axios.get('/api/getData')
+        const res = await axios.get(`${BASE_API_URL}/api/getData`)
         setData(res.data.data);
       } catch (e) {
         console.error(e)
