@@ -18,10 +18,10 @@ export default function page () {
         name,
         message
     }
-
+    
     const handleSubmit = async () => {
       try {
-        await fetch(`https://g-sheet-nextjs.vercel.app/api/test`, {
+        await fetch(`/api/test`, {
           method: 'POST',
           body: JSON.stringify({form})
         })
@@ -36,7 +36,7 @@ export default function page () {
 
     const loadData = async () => {
       try {
-        const res = await axios.get(`https://g-sheet-nextjs.vercel.app/api/getData`)
+        const res = await axios.get(`/api/getData`)
         setData(res.data.data);
       } catch (e) {
         console.error(e)

@@ -21,7 +21,7 @@ export default function page () {
 
     const handleSubmit = async () => {
       try {
-        await fetch(`${BASE_API_URL}/api/test`, {
+        await fetch(`/api/test`, {
           method: 'POST',
           body: JSON.stringify({form})
         })
@@ -36,7 +36,7 @@ export default function page () {
 
     const loadData = async () => {
       try {
-        const res = await axios.get(`${BASE_API_URL}/api/getData`)
+        const res = await axios.get(`/api/getData`)
         setData(res.data.data);
       } catch (e) {
         console.error(e)

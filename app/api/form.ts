@@ -43,9 +43,7 @@ export default async function form(req: NextApiRequest, res: NextApiResponse) {
       }
     })
 
-    return res.status(200).json({
-      data: response.data
-    })
+    return res.redirect(307, '/')
   } catch (error) {
     // console.error(error)
     return res.status(500).send({message: 'Something went wrong'})
