@@ -36,8 +36,14 @@ export default function page () {
 
     const loadData = async () => {
       try {
-        const res = await axios.get(`/api/getData`)
-        setData(res.data.data);
+        const res = await fetch('/api/getData', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        const result = await res.json()
+        setData(result.data);
       } catch (e) {
         console.error(e)
       }
