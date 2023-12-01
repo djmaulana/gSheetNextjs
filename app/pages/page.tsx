@@ -36,12 +36,16 @@ export default function page () {
 
     const loadData = async () => {
       try {
-        const res = await axios.get(`/api/getData`)
+        const res = await axios.get(`/api/getData`, {
+          headers: {
+            'Cache-Control': 'no-cache'
+          }
+        });
         setData(res.data.data);
       } catch (e) {
-        console.error(e)
+        console.error(e);
       }
-    }
+    };
     
     React.useEffect(() => {
       if (wasCalled.current) return

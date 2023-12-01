@@ -1,17 +1,17 @@
 import { google } from 'googleapis'
+import { NextApiRequest, NextApiResponse } from 'next'
 
 type SheetForm = {
-    form: {
-        name: string,
-        message:string
-    }
+    name: string,
+    message:string
   }
 
-export async function POST(req: Request) {
+export async function POST(req: Request, res: NextApiResponse) {
     if (req.method !== 'POST'){
         return new Response('Method not Allowed')
     }
-    const body  = await req.json() as SheetForm
+    const { form }  = await req.json() as { form: SheetForm };
+    const { name, message } = form;
     try {
         const auth = new google.auth.GoogleAuth({
         credentials: {
@@ -39,13 +39,13 @@ export async function POST(req: Request) {
         valueInputOption: 'USER_ENTERED',
         requestBody: {
             values: [
-            [body.form.name, body.form.message]
+            [name, message]
             ]
         }
         })
-        return new Response('OK')
+        res.status(200).json({ message: 'Form submitted successfully' });
     } catch (error) {
         console.error(error)
-        return new Response('ERROR')
+        res.status(500).json({ message: 'An error occurred while processing the form' });
     }
 }
