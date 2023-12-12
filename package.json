@@ -21,6 +21,8 @@
     "dotenv-cli": "^7.3.0",
     "exceljs": "^4.4.0",
     "googleapis": "^128.0.0",
+    "http2": "^3.3.7",
+    "net": "^1.0.2",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",

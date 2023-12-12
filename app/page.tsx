@@ -1,7 +1,7 @@
 'use client'
 import * as React from 'react'
 import axios from 'axios'
-import { BASE_API_URL } from '@/utils/constans';
+import { BASE_API_URL, getData } from '@/utils/constans';
 
 interface MyData {
   name: string;
@@ -13,7 +13,8 @@ export default function page () {
     const [message, setMessage] = React.useState('')
     const [data, setData] = React.useState<MyData[]>([])
     const wasCalled = React.useRef(false);
-
+    // let res = getData();
+    // console.log(res)
     const form = {
         name,
         message
